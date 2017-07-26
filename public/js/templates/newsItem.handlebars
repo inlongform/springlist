@@ -1,0 +1,66 @@
+                  {{#each data}}
+                   <div class="row">
+                                <div class="col-sm-10 col-xs-12 news-item" data-id="{{_id}}">
+
+                                    <div class="media">
+                                        {{#if picture}}
+                                            <a href="{{link}}" target="_blank">
+                                                <div class="media_wrapper">
+                                                    <img src="{{picture}}" alt="" class="media-object img-rounded img-responsive pull-left">
+                                                </div>
+                                            </a>
+                                        {{/if}}
+                                        <a href="{{link}}" target="_blank"><h4 class="media-heading">{{name}}</h4></a>
+                                        {{#if ../date}}
+                                            <p class="date">{{../date}}</p>
+                                        {{else}}
+                                            <p class="date">{{created_time}}</p>
+                                        {{/if}}
+                                        <p class="description">{{{description}}}</p>
+                                        <p>
+                                        {{#each hash}}
+                                            <a href="/api/{{this}}">#{{this}}</a>,
+                                        {{/each}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-12">
+                                    <ul class="push">
+                                    {{#if ../user.facebook }}
+                                        <li>
+                                            <input type="checkbox" class="fb">
+                                            <img src="/images/fb_icon.png" alt="">
+                                        </li>
+                                    {{/if}}
+                                    {{#if ../user.twitter }}
+                                        <li>
+                                            <input type="checkbox" class="tw">
+                                            <img src="/images/twitter_icon.png" alt="">
+                                        </li>
+                                    {{/if}}
+
+                                    {{#if ../user.tumblr }}
+                                        <li>
+                                            <input type="checkbox" class="tu">
+                                            <img src="/images/tumblr_icon.png" alt="">
+                                        </li>
+                                    {{/if}}
+                                    {{#if ../user.hasEmail}}
+                                        <li>
+                                            <input type="checkbox" class="email">
+                                            <img src="/images/email.png" alt="">
+                                        </li>
+                                     {{/if}}
+                                        <li>
+                                            <button type="submit" class="btn btn-success btn-post">POST</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row divider">
+                                <div class="col-sm-12 col-xs-12">
+                                    <hr>
+                                </div>
+                            </div>
+                            {{/each}}
+

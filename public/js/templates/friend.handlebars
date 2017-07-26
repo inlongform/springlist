@@ -1,0 +1,15 @@
+{{#each people}}
+<li>
+    <div class="row">
+        <div class="col-xs-9">
+            <a href="/feed/{{uid}}">
+                <img src="{{picture}}" class="img-circle">
+                <span>{{name}}</span>
+            </a>
+        </div>
+        <div class="col-xs-3">
+            <a class="glyphicon glyphicon-remove pull-right" href="#" data-id="{{uid}}"></a>
+        </div>
+    </div>
+</li>
+{{/each}}

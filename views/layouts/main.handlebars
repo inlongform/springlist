@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+
+    <meta name="generator" content="test" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+
+    <!-- CSS code from Bootply.com editor -->
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700" rel="stylesheet">
+    <link href="/css/app.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml"  href="http://www.website.com/rss.xml" title="My Blog's RSS Feed">
+    <!-- <link href="/css/style.css" rel="stylesheet"> -->
+</head>
+
+
+
+<body id="{{user.id}}">
+    <!-- //loading -->
+    <div class="modal fade" id="loadingModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                
+                <div class="modal-body">
+                        <div class="alert alert-success" role="alert"><h3>Loading...</h3></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- //share -->
+    <div class="modal fade" id="share_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Share</h4>
+                    <p class="share_title"></p>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+
+                        <p class="error_txt">invalid email!!</p>
+                        <p>
+                            <input type="text" placeholder="email address" class="form-control" autocomplete="off" id="email_field" >
+                            <select id="email_select"></select>
+                        </p>
+                        <!-- <p>
+                            <textarea class="form-control" rows="3" placeholder="message"></textarea>
+                        </p> -->
+
+                        <p class="glyphicon glyphicon-ok"></p>
+                        <ul>
+                            <li class="fb"><img src="/images/fb_icon.png" alt=""></li>
+                            <li class="tw"><img src="/images/twitter_icon.png" alt=""></li>
+                            <li class="go"><img src="/images/gplus29.png" alt=""></li>
+                            <li class="tu"><img src="/images/tumblr_icon.png" alt=""></li>
+                            <li class="email"><img src="/images/email.png" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary submit_share">Post</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- //main modal -->
+    <!-- add article -->
+    <div class="modal fade" id="mainModal">
+        <div class="modal-dialog add_modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Item</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+
+                        <p>
+                            <input type="text" placeholder="url" class="form-control" autocomplete="off" id="siteURL">
+                        </p>
+                        <p>
+                            <input type="text" placeholder="hash" class="form-control" autocomplete="off" id="hashTags">
+                        </p>
+                        <p class="error_txt">url can not be an image</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary addItem">Add</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- remove friend-->
+        <div class="modal-dialog remove_modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Remove Friend</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>Are you sure you would like to remove joh smith</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary removeBtn">Remove</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal fade" id="removeModal">
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">SpringList</a>
+                <a href="#" class="glyphicon glyphicon-envelope comments"></a>
+            </div>
+            <div class="navbar-collapse collapse" >
+
+
+                <ul class="nav navbar-nav navbar-right header_tools">
+                    <li >
+                        <form class="navbar-form" role="form">
+                            <div class="form-group">
+                                <input type="text" placeholder="search people" class="form-control" autocomplete="off" id="friend_field">
+                            </div>
+                            <button type="submit" class="btn btn-default search_friends">Search</button>
+                        </form>
+                    </li>
+                    <li>
+                        <a class="glyphicon glyphicon-cog" href="/profile"></a>
+                        <!-- <a class="glyphicon glyphicon-user" href="/profile"></a> -->
+                    </li>
+                </ul>
+
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="box">
+            <div class="row">
+
+                <!-- sidebar -->
+
+                <!-- /sidebar -->
+
+                <!-- main -->
+                {{{body}}}
+                <!-- /main -->
+
+            </div>
+        </div>
+    </div>
+
+    <!--<script type='text/javascript' src="//localhost:35729/livereload.js"></script>-->
+    <script type='text/javascript' src="/js/jquery.min.js"></script>
+    <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+    <!--<script type='text/javascript' src="/js/modernizr-latest.js"></script>
+    <script type='text/javascript' src="/js/handlebars.runtime-v1.3.0.js"></script>
+    <script type='text/javascript' src="/js/templates/templates.js"></script>
+    <script type='text/javascript' src="/js/functions.js"></script>-->
+    <script type='text/javascript' src="/js/app.min.js"></script>
+    <script>
+    jQuery(function() {
+        new Newsists.Index();
+    });
+    </script>
+
+</body>
+
+</html>
